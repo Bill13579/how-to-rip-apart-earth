@@ -11,15 +11,17 @@ public class ClimateChangeController : MonoBehaviour
     public ClimateChangeRates rates;
     public Image healthBar;
     public AudioSource audioSource;
+    public AudioDistortionFilter audioSourceDistortionFilter;
     public AnimationCurve audioCurve;
     public AudioClip endScreenAudioClip;
     public GameObject endScreenPanel;
     public Text coinCount;
+    public GameObject[] stuffToHide;
     public float maxProgress = 100000f;
     
     /*****
         0 => Natural
-        10000 => Ok you win
+        100000 => Ok you win
     *****/
     public float m_Progress = 0;
     public ShopManager shopManager;
@@ -57,10 +59,14 @@ public class ClimateChangeController : MonoBehaviour
     }
 
     void InvokeEndScreen() {
-        GameObject[] flames = GameObject.FindGameObjectsWithTag("Flame");
+        for (int i = 0; i < stuffToHide.Length; i++)
+        {
+            stuffToHide[i].SetActive(false);
+        }
+        /*GameObject[] flames = GameObject.FindGameObjectsWithTag("Flame");
         foreach (GameObject flame in flames) {
             flame.GetComponent<AudioSource>().enabled = false;
-        }
+        }*/
         audioSource.clip = endScreenAudioClip;
         audioSource.volume = 1f;
         audioSource.loop = false;
@@ -70,6 +76,10 @@ public class ClimateChangeController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetKey(KeyCode.E))
+        {
+            Application.Quit();
+        }
         if (m_Progress >= 99990 && !m_InvokedEndScreen) {
             m_InvokedEndScreen = true;
             audioSource.volume = audioCurve.Evaluate(GetProgress() / maxProgress);
@@ -79,6 +89,8 @@ public class ClimateChangeController : MonoBehaviour
         skyFog.color = new Color(skyFog.color.r, skyFog.color.g, skyFog.color.b, m_Progress / rates.FogDuration);
         if (!m_InvokedEndScreen) {
             audioSource.volume = audioCurve.Evaluate(GetProgress() / maxProgress);
+            audioSource.pitch = 1f - (GetProgress() / maxProgress) / 1.4f;
+            audioSourceDistortionFilter.distortionLevel = (GetProgress() / maxProgress) / 1.3f;
         }
     }
 }
