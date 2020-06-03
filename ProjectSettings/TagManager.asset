@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Spawn
+  - Flame
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 458502401
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 1346548341
+    locked: 0
+  - name: Upper Sky
+    uniqueID: 1732191317
+    locked: 0
+  - name: Planet
+    uniqueID: 4192530103
+    locked: 0
+  - name: On The Planet
+    uniqueID: 2863691227
+    locked: 0
+  - name: On The Planet 2
+    uniqueID: 2581193301
+    locked: 0
+  - name: On The Planet 3
+    uniqueID: 774021727
+    locked: 0
+  - name: Fog
+    uniqueID: 1751301437
+    locked: 0
+  - name: Above All
+    uniqueID: 3856029529
+    locked: 0
